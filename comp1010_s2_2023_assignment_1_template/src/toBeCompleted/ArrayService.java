@@ -190,7 +190,24 @@ public class ArrayService {
 	 * return empty array if array is empty
 	 */
 	public static int[] sorted(int[] data) { 
-		return new int[0]; //to be completed
+		if(data == null) {
+			return null;
+		}
+		int[] newArr = new int[data.length];
+		for(int i=0;i<newArr.length;i++) {
+			newArr[i] = data[i];
+		}
+		int hold= 0;
+			for(int i= 0; i<data.length-1;i++) {
+				for(int j=i+1;j< data.length;j++){
+					if(newArr[i] > newArr[j]) {
+						hold = newArr[j];
+						newArr[j] = newArr[i];
+						newArr[i] = hold;
+					}
+				}
+			}
+		return newArr;
 	}
 
 	/**
@@ -211,7 +228,25 @@ public class ArrayService {
 	 * return 0 if array is null or empty.
 	 */
 	public static int median(int[] data) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		if(data == null || data.length == 0) {
+			return 0;
+		}else if(data.length == 1) {
+			return data[0];
+		}
+		
+		int hold= 0;
+		for(int i= 0; i<data.length-1;i++) {
+			for(int j=i+1;j< data.length;j++){
+				if(data[i] > data[j]) {
+					hold = data[j];
+					data[j] = data[i];
+					data[i] = hold;
+				}
+			}
+		}
+		
+		int middle = data.length/2 - 1;
+		return data[middle];
 	}
 
 	/**
