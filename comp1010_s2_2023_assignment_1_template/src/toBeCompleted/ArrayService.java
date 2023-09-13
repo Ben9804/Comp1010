@@ -11,7 +11,14 @@ public class ArrayService {
 	 * return -1 if array is null or empty.
 	 */
 	public static int indexOf(int[] data, int target) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		if(data != null) {
+			for(int i=0;i<data.length;i++) {
+				if(data[i] == target) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	}
 	
 	/**
@@ -23,7 +30,16 @@ public class ArrayService {
 	 * return 0 if array is null or empty.
 	 */
 	public static int countOccurrences(int[] data, int target) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		int count = 0;
+		if(data == null) {
+			return count;
+		}
+		for(int i=0;i<data.length;i++) {
+			if(data[i] == target) {
+				count++;
+			}
+		}
+		return count;
 	}
 	
 	/**
@@ -33,7 +49,18 @@ public class ArrayService {
 	 * return 0 if array is null or empty.
 	 */
 	public static int max(int[] data) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		int highest = 0;
+		boolean firstTime = true;
+		if(data != null) {
+			for(int i=0;i<data.length;i++) {
+				if(firstTime == true || data[i] > highest) {
+					highest = data[i];
+					firstTime = false;
+				}
+				
+			}
+		}
+		return highest;
 	}
 	
 	/**
@@ -43,7 +70,18 @@ public class ArrayService {
 	 * return 0 if array is null or empty.
 	 */
 	public static int min(int[] data) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		int smallest = 0;
+		boolean firstTime = true;
+		if(data != null) {
+			for(int i=0;i<data.length;i++) {
+				if(firstTime == true || data[i] < smallest) {
+					smallest = data[i];
+					firstTime = false;
+				}
+				
+			}
+		}
+		return smallest;
 	}
 
 	/**
@@ -54,7 +92,24 @@ public class ArrayService {
 	 * return 0 if array is null or empty.
 	 */
 	public static int diff(int[] data) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		int highest = 0;
+		int lowest = 0;
+		boolean highFirst = true;
+		boolean lowFirst = true;
+		if(data == null) {
+			return 0;
+		}
+		for(int i=0;i<data.length;i++) {
+			if(highFirst == true || data[i] > highest) {
+				highFirst =false;
+				highest = data[i];
+			}
+			if(lowFirst == true || data[i] < lowest){
+				lowFirst = false;
+				lowest = data[i];
+			}
+		}
+		return highest-lowest;
 	}
 	
 	/**
@@ -68,7 +123,18 @@ public class ArrayService {
 	 * return true if array is empty or has a single item (vacuous truth)
 	 */
 	public static boolean isAscending(int[] data) {
-		return false; //to be completed
+		if(data == null) {
+			return false;
+		}else if(data.length <=1) {
+			return true;
+		}else {
+			for(int i= data.length-1 ;i >= 1;i--) {
+				if(data[i] < data[i-1]) {
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 
 	/**
@@ -82,7 +148,18 @@ public class ArrayService {
 	 * return true if array is empty or has a single item (vacuous truth)
 	 */
 	public static boolean isDescending(int[] data) {
-		return false; //to be completed
+		if(data == null) {
+			return false;
+		}else if(data.length <=1) {
+			return true;
+		}else {
+			for(int i= data.length-1 ;i >= 1;i--) {
+				if(data[i] > data[i-1]) {
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 
 	/**
@@ -92,7 +169,13 @@ public class ArrayService {
 	 * return 0 if array is null or empty.
 	 */
 	public static double average(int[] data) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		double total = 0;
+		if(data != null) {
+			for(int i=0;i<data.length;i++) {
+				total += data[i];
+			}
+		}
+		return total/data.length;
 	}
 	
 	/**
