@@ -258,8 +258,29 @@ public class ArrayService {
 	 * return 0 if the array is null or empty
 	 */
 	public static int mostCommonItem(int[] data) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
-	}
+		if(data == null || data.length == 0) {
+            return 0;
+        }else if(data.length == 1) {
+            return data[0];
+        }
+
+        int common = 0;
+        int maxCount = 0;
+        for(int i= 0; i<data.length-1;i++) {
+        	int count = 0;
+			for(int y= 0;y< data.length;y++){
+        		if(data[i] == data[y]) {
+        			count++;
+        		}
+        	}
+        	if(count > maxCount) {
+        		maxCount = count;
+        		common = data[i];
+        	}
+
+        }
+        return common;
+  	}
 	
 	/**
 	 * HD - 1
