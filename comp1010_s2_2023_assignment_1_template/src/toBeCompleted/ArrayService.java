@@ -170,11 +170,13 @@ public class ArrayService {
 	 */
 	public static double average(int[] data) {
 		double total = 0;
-		if(data != null) {
-			for(int i=0;i<data.length;i++) {
-				total += data[i];
-			}
+		if(data == null || data.length == 0) {
+			return 0.0;
 		}
+		for(int i=0;i<data.length;i++) {
+			total += data[i];
+		}
+		
 		return total/data.length;
 	}
 	
@@ -187,7 +189,7 @@ public class ArrayService {
 	 * return null array if array is null
 	 * return empty array if array is empty
 	 */
-	public static int[] sorted(int[] data) {
+	public static int[] sorted(int[] data) { 
 		return new int[0]; //to be completed
 	}
 
