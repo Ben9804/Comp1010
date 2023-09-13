@@ -268,7 +268,24 @@ public class ArrayService {
 	 * return 0 if array is null or empty.
 	 */
 	public static int longestAscendingSequenceLength(int[] data) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		if(data == null || data.length == 0) {
+			return 0;
+		}
+		int lengthMax = 1;
+		int length = 1;
+		for(int i =0; i<data.length-1; i++) {
+			length = 1;
+			for(int j=i;j<data.length-1;j++) {
+				if(data[j] > data[j+1]) {
+					break;
+				}
+				length++;
+			}
+			if(length > lengthMax) {
+				lengthMax = length;
+			}
+		}
+		return lengthMax;
 	}
 	
 	/**
@@ -279,7 +296,27 @@ public class ArrayService {
 	 * return -1 if array is null or empty.
 	 */
 	public static int longestAscendingSequenceStart(int[] data) {
-		return -100; //-100 is just a placeholder to satisfy the "contract", to be completed
+		if(data == null || data.length == 0) {
+			return -1;
+		}
+		int lengthMax = 1;
+		int length = 1;
+		int index = 0;
+		for(int i =0; i<data.length-1; i++) {
+			length = 1;
+			for(int j=i;j<data.length-1;j++) {
+				if(data[j] > data[j+1]) {
+					break;
+				}
+				length++;
+			}
+			if(length > lengthMax) {
+				lengthMax = length;
+				index =i;
+			}
+		}
+		
+		return index;
 	}
 	
 	/**
@@ -291,6 +328,33 @@ public class ArrayService {
 	 * return empty array if array is empty
 	 */
 	public static int[] longestAscendingSequence(int[] data) {
-		return new int[0]; //to be completed
+		if(data == null ) {
+			return null;
+		}else if(data.length==0) {
+			return new int[0];
+		}
+		
+		int lengthMax = 1;
+		int length = 1;
+		int index = 0;
+		for(int i =0; i<data.length-1; i++) {
+			length = 1;
+			for(int j=i;j<data.length-1;j++) {
+				if(data[j] > data[j+1]) {
+					break;
+				}
+				length++;
+			}
+			if(length > lengthMax) {
+				lengthMax = length;
+				index =i;
+			}
+		}
+		int[] longestSequence = new int[lengthMax];
+		for(int i = 0; i<lengthMax;i++) {
+			longestSequence[i] = data[i+index];
+		}
+	
+		return longestSequence;
 	}
 }
